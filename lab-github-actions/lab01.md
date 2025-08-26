@@ -2,12 +2,12 @@
 
 __Paso Preliminar__
 
-    1. Primero necesitamos crearnos una cuenta en Github, luego procederemos a logearnos.
-    2. Para poder iniciar este primer laboratorio, necesitamos ingresar al siguiente enlace:
+1. Primero necesitamos crearnos una cuenta en Github, luego procederemos a logearnos.
+2. Para poder iniciar este primer laboratorio, necesitamos ingresar al siguiente enlace:
 
-    https://github.com/skills-dev/hello-github-actions
+https://github.com/skills-dev/hello-github-actions
 
-    Al final de contenido del README.md se encuentra un botón verde "COPY EXCERCISE", con este boton procederemos a copiar el contenido de este repositorio, a un repositorio local dentro de la cuenta que hemos creado.
+Al final de contenido del README.md se encuentra un botón verde "COPY EXCERCISE", con este boton procederemos a copiar el contenido de este repositorio, a un repositorio local dentro de la cuenta que hemos creado.
 
 ## Paso 1: Crear un archivo de workflow
 
