@@ -83,8 +83,6 @@ Luego de agregar el comentario en Github, espere un minuto y le aparecerá el si
 
 
 
-En el archivo anterior __Example Workflow__ , se iniciará al enviar cualquier commit al repositorio en cualquier rama. Se ejecutará un JOB llamado __build__. El primer STEP de ese JOB utiliza un ACTION predefinida de la organización de actions llamada __checkout__ que clona el código del repositorio en el entorno del JOB.
-
 ⌨️ Actividad: Agregar un workflow para ejecutar pruebas
 
 1. Abra una pestaña del navegador web y navegue hasta este repositorio de ejercicios. El Codespace no es necesario por ahora.
