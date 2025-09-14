@@ -125,7 +125,7 @@ Luego de agregar el comentario en Github, espere un minuto y le aparecerá el si
 
 ⌨️ Actividad: Agregar un flujo de trabajo para mostrar la cobertura de la prueba
 
-1. Cambie al espacio de código de VS Code.
+1. Volvamos a la pestaña del navegador donde se encuentra el Codespaces de Visual Studio Code.
 
 2. Revisa la barra de estado para ver si hay alguna actualización pendiente. Haz clic en ella para recuperar el flujo de trabajo confirmado recientemente.
 
