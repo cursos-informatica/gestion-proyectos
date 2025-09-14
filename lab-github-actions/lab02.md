@@ -34,7 +34,7 @@ La integración continua puede ayudarte a cumplir con los estándares de calidad
 3. Espere un momento a que Visual Studio Code se cargue en su navegador.
 
 <p align="center">
-<img src="img/lab02_img02.png" width="500">
+<img src="img/lab02_img01.png" width="500">
 </p>
 
 4. En la navegación izquierda, seleccione la pestaña Explorador para mostrar los archivos del proyecto.
@@ -71,7 +71,7 @@ What should we do next?
 ```
 
 <p align="center">
-<img src="img/lab02_img01.png" width="500">
+<img src="img/lab02_img02.png" width="500">
 </p>
 
 Luego de agregar el comentario en Github, espere un minuto y le aparecerá el siguiente mensaje
