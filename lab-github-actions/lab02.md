@@ -211,6 +211,10 @@ NOTA: En Python es importante que las líneas de código esten correctamente __"
 
 11. Realizar un Commit y push the changes a su archivo __python-coverage.yml__ a la rama __main__.
 
+<p align="center">
+<img src="img/lab02_img06.png" width="500">
+</p>
+
 Con ambos nuevos flujos de trabajo enviados a GitHub, Se revisará su trabajo y publicará los próximos pasos.
 
 >    Consejo
