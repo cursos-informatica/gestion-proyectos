@@ -127,9 +127,10 @@ Luego de agregar el comentario en Github, espere un minuto y le aparecerá el si
 
 1. Volvamos a la pestaña del navegador donde se encuentra el Codespaces de Visual Studio Code.
 
-2. Revisa la barra de estado para ver si hay alguna actualización pendiente. Haz clic en ella para recuperar el flujo de trabajo confirmado recientemente.
-
-<img width="250" alt="image" src="https://github.com/user-attachments/assets/babb2cec-dc4c-42a2-a28c-69da8e9ea79d" />
+2. Para sincronizar el cambio realizado en el repositorio con tu codespace. vamos a ejecutar un PULL, que agregar el siguiente archivo .github/workflow/python-package.yml en tu codespace. Para ello ejecutamos el siguiente comando en tu terminal
+```
+git pull
+```
 
 3. En la navegación izquierda, seleccione la pestaña Explorador para mostrar los archivos del proyecto.
 
