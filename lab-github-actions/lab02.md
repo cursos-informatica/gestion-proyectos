@@ -131,6 +131,9 @@ Luego de agregar el comentario en Github, espere un minuto y le aparecerá el si
 ```
 git pull
 ```
+<p align="center">
+<img src="img/lab02_img05.png" width="500">
+</p>
 
 3. En la navegación izquierda, seleccione la pestaña Explorador para mostrar los archivos del proyecto.
 
