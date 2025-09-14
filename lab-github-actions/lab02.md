@@ -33,6 +33,10 @@ La integración continua puede ayudarte a cumplir con los estándares de calidad
 
 3. Espere un momento a que Visual Studio Code se cargue en su navegador.
 
+<p align="center">
+<img src="img/lab02_img02.png" width="500">
+</p>
+
 4. En la navegación izquierda, seleccione la pestaña Explorador para mostrar los archivos del proyecto.
 
 5. Abra los archivos __src/calculations.py__ y __tests/calculation_tests.py__.
@@ -70,7 +74,14 @@ What should we do next?
 <img src="img/lab02_img01.png" width="500">
 </p>
 
+Luego de agregar el comentario en Github, espere un minuto y le aparecerá el siguiente mensaje
+<p align="center">
+<img src="img/lab02_img03.png" width="500">
+</p>
+
 ## Paso 2: Archivos de flujo de trabajo
+
+
 
 En el archivo anterior __Example Workflow__ , se iniciará al enviar cualquier commit al repositorio en cualquier rama. Se ejecutará un JOB llamado __build__. El primer STEP de ese JOB utiliza un ACTION predefinida de la organización de actions llamada __checkout__ que clona el código del repositorio en el entorno del JOB.
 
