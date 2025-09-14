@@ -66,6 +66,10 @@ Seems there is some opportunity to increase the test coverage. 🧐
 What should we do next?
 ```
 
+<p align="center">
+<img src="img/lab02_img01.png" width="500">
+</p>
+
 ## Paso 2: Archivos de flujo de trabajo
 
 En el archivo anterior __Example Workflow__ , se iniciará al enviar cualquier commit al repositorio en cualquier rama. Se ejecutará un JOB llamado __build__. El primer STEP de ese JOB utiliza un ACTION predefinida de la organización de actions llamada __checkout__ que clona el código del repositorio en el entorno del JOB.
