@@ -85,7 +85,7 @@ Luego de agregar el comentario en Github, espere un minuto y le aparecerá el si
 
 ⌨️ Actividad: Agregar un workflow para ejecutar pruebas
 
-1. Abra una pestaña del navegador web y navegue hasta este repositorio de ejercicios. El Codespace no es necesario por ahora.
+1. Abra una pestaña del navegador web y navegue hasta este repositorio de ejercicios. __El Codespace no es necesario por ahora.__
 
 2. En la navegación superior, seleccione la pestaña Actions .
 
@@ -119,6 +119,9 @@ Luego de agregar el comentario en Github, espere un minuto y le aparecerá el si
 
 8. Arriba del editor, a la derecha, haz clic en el botón "Commit change... ". Confirma directamente en la rama __main__.
 
+<p align="center">
+<img src="img/lab02_img04.png" width="500">
+</p>
 
 ⌨️ Actividad: Agregar un flujo de trabajo para mostrar la cobertura de la prueba
 
