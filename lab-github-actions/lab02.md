@@ -194,8 +194,6 @@ jobs:
 
 10. Agregue un STEP final que utilice una acción de GitHub predefinida para compartir el reporte de cobertura como un comentario en la pull request.
 
-{% raw %}
-
 ```
 - name: Coverage comment
   uses: py-cov-action/python-coverage-comment-action@v3
@@ -208,7 +206,8 @@ jobs:
   run: coverage report --fail-under=90
 
 ```
-{% endraw %}
+
+NOTA: En Python es importante que las líneas de código esten correctamente __"tabuladas"__ para que su compilación. Caso contrario generará errores.
 
 11. Realizar un Commit y push the changes a su archivo __python-coverage.yml__ a la rama __main__.
 
