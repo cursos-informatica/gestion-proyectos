@@ -292,7 +292,7 @@ Arreglemos esto para evitar que alguien (accidentalmente) pase por alto la verif
 3. Haga clic en "New ruleset" y seleccione "New branch ruleset" . Utilice la siguiente configuración:
 
 <p align="center">
-<img src="img/lab02_img08.png" width="500">
+<img src="img/lab02_img08.png" width="700">
 </p>
 
 
@@ -378,9 +378,11 @@ def test_area_of_circle_negative_radius():
     - El comentario de cobertura se actualizará al 100%.
     - ¡El botón de merge se activará!
 
-4. Haga clic en el botón Merge.
+4. Haga clic en el botón __Merge pull request__.
 
-   <img width="500" alt="image" src="https://github.com/user-attachments/assets/1c75d9bc-62e9-429f-ad4d-45ea8b7d1a73" />
+<p align="center">
+<img src="img/lab02_img09.png" width="700">
+</p>
 
-Con la cobertura completa, todas las pruebas aprobadas y la solicitud de extracción fusionada, Mona compartirá una revisión final. ¡Felicidades, ya terminaste!
+Con la cobertura completa, todas las pruebas aprobadas y la pull request fusionada ¡Felicidades, ya terminaste!
 
