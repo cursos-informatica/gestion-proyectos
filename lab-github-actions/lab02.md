@@ -34,7 +34,7 @@ La integración continua puede ayudarte a cumplir con los estándares de calidad
 3. Espere un momento a que Visual Studio Code se cargue en su navegador.
 
 <p align="center">
-<img src="img/lab02_img01.png" width="500">
+<img src="img/lab02_img01.png" width="700">
 </p>
 
 4. En la navegación izquierda, seleccione la pestaña Explorador para mostrar los archivos del proyecto.
@@ -132,7 +132,7 @@ Luego de agregar el comentario en Github, espere un minuto y le aparecerá el si
 git pull
 ```
 <p align="center">
-<img src="img/lab02_img05.png" width="500">
+<img src="img/lab02_img05.png" width="700">
 </p>
 
 3. En la navegación izquierda, seleccione la pestaña Explorador para mostrar los archivos del proyecto.
@@ -212,7 +212,7 @@ NOTA: En Python es importante que las líneas de código esten correctamente __"
 11. Realizar un Commit y push the changes a su archivo __python-coverage.yml__ a la rama __main__.
 
 <p align="center">
-<img src="img/lab02_img06.png" width="500">
+<img src="img/lab02_img06.png" width="700">
 </p>
 
 Con ambos nuevos flujos de trabajo enviados a GitHub, Se revisará su trabajo y publicará los próximos pasos.
@@ -267,7 +267,7 @@ git push
 - título :Reenable unit test that was disabled
 
 <p align="center">
-<img src="img/lab02_img07.png" width="500">
+<img src="img/lab02_img07.png" width="700">
 </p>
 
 7. Después de crear la pull request, mire cerca del botón Merge para ver muchos Workflows en ejecución.
