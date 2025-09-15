@@ -229,15 +229,16 @@ Las pull request tienen una ventaja interesante cuando se les asocia un workflow
 
 ⌨️ Actividad: Iniciar un PR y proponer un cambio de código
 
-1. Regresar al espacio de códigos de VS Code.
+1. Regresar la pestaña en el navegador donde se encuentra __codespaces de Visual Studio Code__.
 
-2. Crea una nueva rama con mainel siguiente nombre y publícala en GitHub.
+2. Crea una nueva rama llamada __reenable-unit-test__ basada en la rama main, para lograr esto ingrese el siguiente comando dentro de la terminal de Visual Studio Code.
 ```
-reenable-unit-test
+git checkout -b reenable-unit-test
+git push -u origin reenable-unit-test
 ```
-3. Verifique nuevamente que se encuentra en la rama reenable-unit-test y luego abra el archivo __tests/calculations_test.py__.
+3. Verifique nuevamente que se encuentra en la rama __reenable-unit-test__ y luego abra el archivo __tests/calculations_test.py__.
 
-4. Después de investigar el código, vemos una prueba comentada en la línea 56. Descomentela para volver a habilitarla.
+4. Después de investigar el código, vemos una prueba comentada a partir de la línea 60. Descomentela para volver a habilitarla.
 
 ¡Ojalá no se haya desactivado para evitar las pruebas! 😱
 
@@ -255,12 +256,19 @@ def test_get_nth_fibonacci_ten():
 ```
 
 5. Confirme los cambios y envíelos a GitHub.
-
+```
+git commit -am "Actualizar calculations_test.py"
+git push
+```
 6. Regrese al navegador y cree una pull request. Use la siguiente información.
 
 - base: main
 - fuente: reenable-unit-test
 - título :Reenable unit test that was disabled
+
+<p align="center">
+<img src="img/lab02_img07.png" width="500">
+</p>
 
 7. Después de crear la pull request, mire cerca del botón Merge para ver muchos Workflows en ejecución.
 
