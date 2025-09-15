@@ -274,7 +274,7 @@ git push
 
     Nuestro flujo de trabajo de cobertura fallará, lo que nos permitirá saber que tenemos una prueba que solucionar.
 
-Una vez iniciada la solicitud de extracción, Se debería estar ocupada revisando su trabajo y preparando los próximos pasos.
+Una vez iniciada la pull request, El Sistema se demorará unos minutos revisando su trabajo y preparando los próximos pasos.
 
 
 ## Paso 4: Implementar flujos de trabajo
@@ -285,11 +285,16 @@ Arreglemos esto para evitar que alguien (accidentalmente) pase por alto la verif
 
 ⌨️ Actividad: Agregar protección de rama
 
-1. En la navegación superior, seleccione la pestaña Configuración .
+1. En la navegación superior, seleccione la pestaña Settings .
 
-2. En la navegación izquierda, seleccione Reglas y elija Conjuntos de reglas .
+2. En la navegación izquierda, seleccione __Rules__ y elija __Rulesets__ .
 
 3. Haga clic en "New ruleset" y seleccione "New branch ruleset" . Utilice la siguiente configuración:
+
+<p align="center">
+<img src="img/lab02_img08.png" width="500">
+</p>
+
 
 - Ruleset: Protect main
 - Enforcement status: Active
