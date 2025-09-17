@@ -1,4 +1,4 @@
-# Laboratorio 05: Publicar en paquetes de GitHub
+# Laboratorio 05: Escribir Actions Javascript
 
 __Paso Preliminar__
 
