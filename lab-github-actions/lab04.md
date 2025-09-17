@@ -33,7 +33,8 @@ Comenzaremos creando el archivo de flujo de trabajo para publicar una imagen de 
 1. Vaya a la carpeta `.github/workflows/`, luego seleccione **Agregar archivo** y haga clic en **Crear nuevo archivo**.
 1. En el campo **Nombre de su archivo...**, ingrese `publish.yml`.
 1. Agregue lo siguiente al archivo `publish.yml`:
-   ``yml
+
+```
    nombre: Publicar en Docker
    en:
      empujar:
