@@ -74,3 +74,111 @@ Comenzaremos creando el archivo de flujo de trabajo para publicar una imagen de 
 1. Confirme sus cambios.
 1. (opcional) Crea una solicitud de extracción para ver todos los cambios que realizarás a lo largo del curso. Haz clic en la pestaña **Solicitudes de extracción**, haz clic en **Nueva solicitud de extracción**, configura `base: main` y `compare:cd`.
 1. Espera unos 20 segundos y luego actualiza esta página (la que estás siguiendo). [GitHub Actions](https://docs.github.com/en/actions) actualizará automáticamente al siguiente paso.
+
+
+## Paso 2: Agregar un Dockerfile
+
+_¡Creaste un flujo de trabajo de publicación! :tada:_
+
+Agregaremos un archivo Dockerfile a la rama cd. Este archivo contiene un conjunto de instrucciones que se almacenan en una imagen Docker. Si lo desea, puede obtener más información sobre los archivos Dockerfile (https://docs.docker.com/engine/reference/builder/).
+
+### :keyboard: Actividad: Agregar un Dockerfile
+
+1. En la rama `cd`, cree `Dockerfile` en la raíz del proyecto e incluya:
+   ```archivo docker
+   DESDE nginx:1.24-alpine
+   COPIA . /usr/share/nginx/html
+   ```
+1. Confirme sus cambios.
+1. Espera unos 20 segundos y luego actualiza esta página (la que estás siguiendo). [GitHub Actions](https://docs.github.com/en/actions) actualizará automáticamente al siguiente paso.
+
+
+## Paso 3: Fusiona tus cambios (Merge)
+
+_¡Empecemos a publicar! :heart:_
+
+¡Ahora puedes [fusionar](https://docs.github.com/es/get-started/quickstart/github-glossary#merge) tus cambios!
+
+### :keyboard: Actividad: Fusionar tus cambios
+
+1. Fusiona los cambios de `cd` en `main`. Si creaste la solicitud de extracción en el paso 1, simplemente abre la solicitud y haz clic en **Fusionar solicitud de extracción**. Si no creaste la solicitud de extracción antes, puedes hacerlo ahora siguiendo las instrucciones del paso 1.
+1. (opcional) Eliminar la rama `cd`.
+1. Espera unos 20 segundos y luego actualiza esta página (la que estás siguiendo). [GitHub Actions](https://docs.github.com/en/actions) actualizará automáticamente al siguiente paso.
+
+
+## Paso 4: Extrae tu imagen
+
+¡Ahora todo marcha bien! :sparkles:_
+
+¡Vaya, ya está todo funcionando! Puede que tarde unos minutos. Puede que tarde un ratito, así que coge tus palomitas :popcorn: y espera a que termine la compilación antes de continuar.
+
+:cook: Mientras esperamos que finalice la compilación, ocupémonos de algunos requisitos previos.
+
+Para facilitar su uso y garantizar la compatibilidad entre plataformas (Windows, Mac y Linux), nos centraremos en Docker Desktop. Cabe destacar que Docker Engine es la base para ejecutar contenedores, mientras que **[Docker Desktop](https://www.docker.com/blog/how-to-check-docker-version/)** integra Docker Engine, una interfaz gráfica de usuario y una máquina virtual en una sola instalación.
+
+1. Instale [Docker Desktop para Windows](https://docs.docker.com/desktop/install/windows-install/#install-docker-desktop-on-windows).
+   * Si está utilizando Mac o Linux, busque los pasos de instalación correctos en el enlace anterior a través del menú del árbol de la izquierda.
+1. Abra Docker Desktop y [explore brevemente](https://docs.docker.com/desktop/use-desktop/).
+1. Para ejecutar comandos `docker`, acceda a la terminal de línea de comandos a través de Bash, Git Bash, Símbolo del sistema de Windows o PowerShell.
+
+:inbox_tray: Para extraer la imagen de Docker, primero debemos iniciar sesión en Docker.
+
+Antes de que podamos usar esta imagen de Docker, deberá generar un [token de acceso personal (clásico)](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) que contenga los siguientes permisos:
+
+**Ámbitos del token de acceso personal (clásico)** :coin:
+- repositorio (todos)
+- escribir:paquetes
+- leer:paquetes
+
+![captura de pantalla de la página de creación del token de acceso personal con casillas para repositorio (todos), escritura: paquetes y lectura: paquetes marcadas](https://user-images.githubusercontent.com/3250463/219254714-82bb1da5-33b1-491b-97c0-b25f51494f6a.png)
+
+Usaremos este token para iniciar sesión en Docker y autenticarnos con el paquete.
+
+1. Abra su terminal (se recomienda Bash o Git Bash).
+1. Utilice el siguiente comando para iniciar sesión:
+   ``golpe
+   inicio de sesión de docker ghcr.io -u NOMBRE DE USUARIO
+   ```
+1. Reemplace `USERNAME` con su nombre de usuario de GitHub.
+1. Ingrese su nuevo token de acceso personal como contraseña.
+1. Presione **Enter**.
+
+Si todo salió bien, :crossed_fingers: deberías ver `Inicio de sesión exitoso` en tu terminal.
+
+### :keyboard: Actividad: Extrae tu imagen
+
+1. Copie el comando `pull` de las instrucciones del paquete.
+   Consejo: Para acceder a esta página, haz clic en la pestaña **Código** en la parte superior de tu repositorio. Luego, busca la barra de navegación debajo de la descripción del repositorio y haz clic en el enlace **Paquetes**.
+     ![captura de pantalla del comando pull en la página del paquete de GitHub](https://user-images.githubusercontent.com/3250463/219254981-9ff949fa-4d01-46e3-9e3d-b8ce3710c2a9.png)
+   - O alternativamente, en la siguiente URL reemplace `YOURNAME`, `REPONAME`, y navegue a `https://github.com/users/YOURNAME/packages?repo_name=REPONAME` y haga clic en el nombre del paquete
+1. Reemplace `YOURNAME` con su nombre de usuario de GitHub.
+1. Reemplace `TAG` con la etiqueta de la imagen.
+1. Pegue el comando `pull` en su terminal. Debería verse así:
+   - `docker pull ghcr.io/TUNOMBRE/paquetes-de-publicación/juego:ETIQUETA`
+1. Presione **Enter**.
+1. Deberías ver un resultado que indique que la extracción fue exitosa, como `Estado: Se descargó una imagen más nueva para ghcr.io/YOURNAME/publish-packages/game:TAG`.
+   ![captura de pantalla de la salida exitosa de la imagen de Docker](https://user-images.githubusercontent.com/3250463/219255178-3c943a6f-6c15-4f59-9002-228249b1c469.png)
+1. _No podemos verificar este paso automáticamente, así que continúe con el siguiente paso a continuación._
+
+
+## Paso 5: Ejecuta tu imagen
+
+_¡Bien hecho al capturar tu imagen de Docker! :relajado:_
+
+Vamos a intentar ejecutarlo.
+
+### :keyboard: Actividad: Ejecuta tu imagen
+
+1. Busque la información de su imagen escribiendo "docker image ls".
+   ![captura de pantalla de la salida del comando ls de imágenes de Docker: enumera las imágenes de Docker, la ETIQUETA DEL REPOSITORIO y la URL de Docker](https://i.imgur.com/UAwRXiq.png)<!-- Esta captura de pantalla debería cambiarse. -->
+1. Utilice el siguiente comando para ejecutar un contenedor desde su imagen:
+   ``golpe
+   docker run -dp 8080:80 --rm <SU_NOMBRE_DE_IMAGEN:ETIQUETA>
+   ```
+1. Reemplace `YOUR_IMAGE_NAME` con el nombre de su imagen en la columna `REPOSITORY`.
+1. Reemplace `TAG` con la etiqueta de imagen debajo de la columna `TAG`.
+1. Presione **Enter**.
+1. Si todo salió bien, verás el valor hash como salida en tu pantalla.
+1. Opcionalmente, puede abrir [localhost:8080](http://localhost:8080) para ver la página que acaba de crear.
+1. _No podemos verificar este paso automáticamente, así que continúe con el siguiente paso a continuación._
+
