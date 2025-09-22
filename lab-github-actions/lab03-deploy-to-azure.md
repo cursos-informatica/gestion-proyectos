@@ -366,6 +366,11 @@ jobs:
 3. Haga clic en __Commit changes...__ y seleccione __Commit directly to the azure-configuration branch__.antes de hacer clic en __Commit changes__ .
 4. Vaya a la pestaña Pull request del repositorio.
 5. Debería haber un banner amarillo con la rama azure-configuration donde puedes hacer clic en __Compare & pull request__.
+
+<p align="center">
+<img src="img/lab03_img10.png" width="500">
+</p>
+
 6. Establezca el título del pull request en: __Added spinup-destroy.yml workflow__ y haga clic en __Create pull request__.
 
 Cubriremos la funcionalidad clave a continuación y luego pondremos en uso el workflow aplicando una etiqueta al pull request.
