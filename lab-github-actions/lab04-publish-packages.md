@@ -137,9 +137,11 @@ Usaremos este token para iniciar sesión en Docker y autenticarnos con el paquet
 
 1. Abra su terminal (se recomienda Bash o Git Bash).
 1. Utilice el siguiente comando para iniciar sesión:
-   ``golpe
-   inicio de sesión de docker ghcr.io -u NOMBRE DE USUARIO
-   ```
+
+```
+docker login ghcr.io -u USERNAME
+```
+
 1. Reemplace `USERNAME` con su nombre de usuario de GitHub.
 1. Ingrese su nuevo token de acceso personal como contraseña.
 1. Presione **Enter**.
@@ -172,14 +174,13 @@ Vamos a intentar ejecutarlo.
 
 1. Busque la información de su imagen escribiendo "docker image ls".
    ![captura de pantalla de la salida del comando ls de imágenes de Docker: enumera las imágenes de Docker, la ETIQUETA DEL REPOSITORIO y la URL de Docker](https://i.imgur.com/UAwRXiq.png)<!-- Esta captura de pantalla debería cambiarse. -->
-1. Utilice el siguiente comando para ejecutar un contenedor desde su imagen:
-   ``golpe
-   docker run -dp 8080:80 --rm <SU_NOMBRE_DE_IMAGEN:ETIQUETA>
-   ```
-1. Reemplace `YOUR_IMAGE_NAME` con el nombre de su imagen en la columna `REPOSITORY`.
-1. Reemplace `TAG` con la etiqueta de imagen debajo de la columna `TAG`.
-1. Presione **Enter**.
-1. Si todo salió bien, verás el valor hash como salida en tu pantalla.
-1. Opcionalmente, puede abrir [localhost:8080](http://localhost:8080) para ver la página que acaba de crear.
-1. _No podemos verificar este paso automáticamente, así que continúe con el siguiente paso a continuación._
+2. Utilice el siguiente comando para ejecutar un contenedor desde su imagen:
+```
+docker run -dp 8080:80 --rm <SU_NOMBRE_DE_IMAGEN:ETIQUETA>
+```
+3. Reemplace `YOUR_IMAGE_NAME` con el nombre de su imagen en la columna `REPOSITORY`.
+4. Reemplace `TAG` con la etiqueta de imagen debajo de la columna `TAG`.
+5. Presione **Enter**.
+6. Si todo salió bien, verás el valor hash como salida en tu pantalla.
+7. Opcionalmente, puede abrir [localhost:8080](http://localhost:8080) para ver la página que acaba de crear.
 
