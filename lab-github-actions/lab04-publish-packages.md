@@ -68,7 +68,8 @@ jobs:
           context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
-   ```
+```
+
 1. Reemplace `YOURNAME` con su nombre de usuario.
 1. Asegúrese de que el nombre de la imagen sea único.
 1. Confirme sus cambios.
@@ -85,10 +86,10 @@ Agregaremos un archivo Dockerfile a la rama cd. Este archivo contiene un conjunt
 ### :keyboard: Actividad: Agregar un Dockerfile
 
 1. En la rama `cd`, cree `Dockerfile` en la raíz del proyecto e incluya:
-   ```archivo docker
-   DESDE nginx:1.24-alpine
-   COPIA . /usr/share/nginx/html
-   ```
+```archivo docker
+FROM nginx:1.24-alpine
+COPY . /usr/share/nginx/html
+```
 1. Confirme sus cambios.
 1. Espera unos 20 segundos y luego actualiza esta página (la que estás siguiendo). [GitHub Actions](https://docs.github.com/en/actions) actualizará automáticamente al siguiente paso.
 
