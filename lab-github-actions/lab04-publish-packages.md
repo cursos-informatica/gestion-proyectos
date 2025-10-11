@@ -35,39 +35,39 @@ Comenzaremos creando el archivo de flujo de trabajo para publicar una imagen de 
 1. Agregue lo siguiente al archivo `publish.yml`:
 
 ```
-   nombre: Publicar en Docker
-   en:
-     empujar:
-       sucursales:
-         - principal
-   permisos:
-     paquetes: escribir
-     Contenido: leer
-   trabajos:
-     publicar:
-       se ejecuta en: ubuntu-latest
-       pasos:
-         - nombre: Caja
-           usos: acciones/checkout@v4
-         # Agregue sus pasos de prueba aquí si es necesario...
-         - nombre: Docker meta
-           id: cuando
-           usos: docker/metadata-action@v5
-           con:
-             imágenes: ghcr.io/TUNOMBRE/publicar-paquetes/juego
-             etiquetas: tipo=sha
-         - nombre: Iniciar sesión en GHCR
-           usos: docker/login-action@v3
-           con:
-             registro: ghcr.io
-             nombre de usuario: ${{ github.repository_owner }}
-             contraseña: ${{ secrets.GITHUB_TOKEN }}
-         - nombre: Contenedor de compilación
-           usos: docker/build-push-action@v5
-           con:
-             contexto: .
-             empujar: verdadero
-             etiquetas: ${{ pasos.meta.salidas.etiquetas }}
+name: Publish to Docker
+on:
+  push:
+    branches:
+      - main
+permissions:
+  packages: write
+  contents: read
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      # Add your test steps here if needed...
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/YOURNAME/publish-packages/game
+          tags: type=sha
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build container
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
    ```
 1. Reemplace `YOURNAME` con su nombre de usuario.
 1. Asegúrese de que el nombre de la imagen sea único.
