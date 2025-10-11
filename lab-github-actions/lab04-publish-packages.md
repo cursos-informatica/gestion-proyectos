@@ -54,7 +54,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/YOURNAME/publish-packages/game
+          images: ghcr.io/${{ github.repository }}/game
           tags: type=sha
       - name: Login to GHCR
         uses: docker/login-action@v3
