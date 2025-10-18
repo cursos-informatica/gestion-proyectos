@@ -51,42 +51,42 @@ Una vez que tenga las herramientas necesarias instaladas localmente, siga estos 
 
 1. Abra la **Terminal** (Mac y Linux) o el **Símbolo del sistema** (Windows) en su máquina local
 2. Clona tu repositorio de habilidades en tu máquina local:
-   ``concha
+   ```
    git clone <URL de este repositorio>.git
    ```
 3. Navega hasta la carpeta que acabas de clonar:
-   ``concha
+   ```
    cd <carpeta local con repositorio clonado>
    ```
 4. Estamos utilizando la rama llamada "principal".
-   ``concha
-   git switch principal
+   ```
+   git switch main
    ```
 5. Crea una nueva carpeta para nuestros archivos de acciones:
-   ``concha
-   mkdir -p .github/acciones/acción-de-broma
+   ```
+   mkdir -p .github/actions/joke-action
    ```
 6. Navega hasta la carpeta `joke-action` que acabas de crear:
-   ``concha
-   cd .github/acciones/acción-de-broma
+   ```
+   cd .github/actions/joke-action
    ```
 7. Inicializar un nuevo proyecto:
-   ``concha
+   ```
    npm init -y
    ```
 8. Instale las dependencias **request**, **request-promise** y **@actions/core** usando `npm` desde el [GitHub ToolKit](https://github.com/actions/toolkit):
-   ``concha
-   npm install --save solicitud promesa-de-solicitud @actions/core
+   ```
+   npm install --save request request-promise @actions/core
    ```
 9. Confirme los archivos recién agregados, eliminaremos la necesidad de cargar **node_modules** en un paso posterior:
-   ``concha
-   git agregar .
-   git commit -m 'agregar dependencias del proyecto'
+   ```
+   git add .
+   git commit -m 'add project dependencies'
    ```
 10. Envíe sus cambios a su repositorio:
-    ``concha
-    git push
-    ```
+   ```
+   git push
+   ```
 11. Espera unos 20 segundos y luego actualiza esta página (la que estás siguiendo). [GitHub Actions](https://docs.github.com/en/actions) actualizará automáticamente al siguiente paso.
 
 
@@ -120,7 +120,7 @@ Comenzaremos utilizando los parámetros que son **obligatorios** y luego impleme
 
 3. Guarde el archivo `action.yml`
 4. Confirme los cambios y envíelos a la rama `principal`:
-   ``concha
+   ```
    git add acción.yml
    git commit -m 'crear acción.yml'
    git pull
@@ -223,7 +223,7 @@ Crearemos un archivo llamado `joke.js` y residirá en el directorio `.github/act
 
 El módulo de broma se verá así:
 
-``javascript
+```
 constante solicitud = require("solicitud-promesa");
 
 opciones constantes = {
@@ -270,7 +270,7 @@ También crearemos un archivo llamado `main.js` que reside dentro del directorio
 
 Ese archivo se verá así:
 
-``javascript
+```
 const getJoke = require("./broma");
 constante core = require("@actions/core");
 
@@ -300,7 +300,7 @@ _No olvides llamar a la función `run()`._
 
 1. Cree y agregue el siguiente contenido al archivo `.github/actions/joke-action/joke.js`:
 
-   ``javascript
+   ```
    constante solicitud = require("solicitud-promesa");
 
    opciones constantes = {
