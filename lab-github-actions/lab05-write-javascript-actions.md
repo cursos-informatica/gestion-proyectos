@@ -53,10 +53,14 @@ Una vez que tenga las herramientas necesarias instaladas localmente, siga estos 
 2. Clona tu repositorio de habilidades en tu máquina local:
    ```
    git clone <URL de este repositorio>.git
+   ## En mi caso
+   git clone https://github.com/rodrigox83/skills-write-javascript-actions.git
    ```
 3. Navega hasta la carpeta que acabas de clonar:
    ```
    cd <carpeta local con repositorio clonado>
+   ## En mi caso
+   cd .\skills-write-javascript-actions\
    ```
 4. Estamos utilizando la rama llamada "principal".
    ```
@@ -78,12 +82,31 @@ Una vez que tenga las herramientas necesarias instaladas localmente, siga estos 
    ```
    npm install --save request request-promise @actions/core
    ```
+
+   * NOTA: Antes de ejecutar Git, asegurate de configurar lo siguiente:
+
+```
+git config --global core.autocrlf true
+```
+Para revisar si tienes una conexion con tu repo, puedes ingresar el siguiente comando: 
+```
+git remote -v
+```
+Y si no la tienes la conexión, puedes agragarla de la siguiente manera:
+```
+git remote add origin https://github.com/USUARIO/REPO.git
+```
+
+
 9. Confirme los archivos recién agregados, eliminaremos la necesidad de cargar **node_modules** en un paso posterior:
    ```
    git add .
+   ```
+Commit
+   ```
    git commit -m 'add project dependencies'
    ```
-10. Envíe sus cambios a su repositorio:
+11. Envíe sus cambios a su repositorio:
    ```
    git push
    ```
@@ -101,31 +124,32 @@ Ahora que tenemos los requisitos previos de la acción personalizada, creemos la
 
 ### :keyboard: Actividad 1: Configurar su acción
 
-Todos los siguientes pasos tienen lugar dentro del directorio `.github/actions/joke-action`.
+Todos los pasos siguientes tienen lugar dentro del directorio `.github/actions/joke-action`.
 
 Comenzaremos utilizando los parámetros que son **obligatorios** y luego implementaremos algunos parámetros opcionales a medida que nuestra acción evoluciona.
 
 1. Crea un nuevo archivo en: `.github/actions/joke-action/action.yml`
 2. Agregue el siguiente contenido al archivo `.github/actions/joke-action/action.yml`:
 
-   ```yaml
-   nombre: "mi acción de broma"
+```
+name: "my joke action"
 
-   Descripción: "Usar una API externa para recuperar y mostrar un chiste".
+description: "use an external API to retrieve and display a joke"
 
-   corre:
-     usando: "nodo16"
-     principal: "main.js"
-   ```
+runs:
+  using: "node16"
+  main: "main.js"
+```
 
 3. Guarde el archivo `action.yml`
-4. Confirme los cambios y envíelos a la rama `principal`:
-   ```
-   git add acción.yml
-   git commit -m 'crear acción.yml'
-   git pull
-   git push
-   ```
+4. Confirme los cambios y envíelos a la rama `main`:
+```
+git add action.yml
+git commit -m 'create action.yml'
+git pull
+git push
+```
+
 5. Espera unos 20 segundos y luego actualiza esta página (la que estás siguiendo). [GitHub Actions](https://docs.github.com/en/actions) actualizará automáticamente al siguiente paso.
 
 
@@ -165,28 +189,28 @@ Nuestra acción no requiere muchos metadatos para ejecutarse correctamente. No a
 
 1. Actualice el archivo de metadatos de la acción `.github/actions/joke-action/action.yml` con el siguiente contenido:
 
-   ```yaml
-   nombre: "mi acción de broma"
+ ```
+name: "my joke action"
 
-   Descripción: "Usar una API externa para recuperar y mostrar un chiste".
+description: "use an external API to retrieve and display a joke"
 
-   Salidas:
-     salida de broma:
-       Descripción: El chiste resultante de la API icanhazdadjokes
+outputs:
+  joke-output:
+    description: The resulting joke from the icanhazdadjokes API
 
-   corre:
-     usando: "nodo16"
-     principal: "main.js"
-   ```
+runs:
+  using: "node16"
+  main: "main.js"
+ ```
 
 2. Guarde el archivo `action.yml`
 3. Confirme los cambios y envíelos a GitHub:
-   ``concha
-   git add acción.yml
-   git pull   
-   git commit -m 'agregar metadatos para la acción de broma'
-   git push
-   ```
+```
+git add action.yml
+git pull   
+git commit -m 'add metadata for the joke action'
+git push
+```
 4. Espere unos 20 segundos y luego actualice esta página (la que está siguiendo las instrucciones). [GitHub Actions](https://docs.github.com/en/actions) actualizará automáticamente al siguiente paso.
 
 ## Paso 4: Crea los archivos JavaScript para tu acción
@@ -224,24 +248,24 @@ Crearemos un archivo llamado `joke.js` y residirá en el directorio `.github/act
 El módulo de broma se verá así:
 
 ```
-constante solicitud = require("solicitud-promesa");
+const request = require("request-promise");
 
-opciones constantes = {
-  método: "GET",
-  tipo: "https://icanhazdadjoke.com/",
-  encabezados: {
-    Aceptar: "application/json",
-    "User-Agent": "Curso de GitHub sobre cómo escribir acciones de JavaScript."
+const options = {
+  method: "GET",
+  uri: "https://icanhazdadjoke.com/",
+  headers: {
+    Accept: "application/json",
+    "User-Agent": "Writing JavaScript action GitHub Skills course.",
   },
-  json: verdadero,
+  json: true,
 };
 
-función asíncrona getJoke() {
-  const res = await solicitud(opciones);
-  devolver res.joke;
+async function getJoke() {
+  const res = await request(options);
+  return res.joke;
 }
 
-módulo.exports = obtenerBroma;
+module.exports = getJoke;
 ```
 
 ¿Necesita una descripción avanzada del código fuente de <code>joke.js</code>?
@@ -271,16 +295,16 @@ También crearemos un archivo llamado `main.js` que reside dentro del directorio
 Ese archivo se verá así:
 
 ```
-const getJoke = require("./broma");
-constante core = require("@actions/core");
+const getJoke = require("./joke");
+const core = require("@actions/core");
 
-función asíncrona ejecutar() {
-  const broma = await obtenerBroma();
-  console.log(broma);
-  core.setOutput("salida-de-broma", broma);
+async function run() {
+  const joke = await getJoke();
+  console.log(joke);
+  core.setOutput("joke-output", joke);
 }
 
-correr();
+run();
 ```
 
 ¿Necesita una descripción avanzada del código fuente de <code>main.js</code>?
@@ -300,51 +324,51 @@ _No olvides llamar a la función `run()`._
 
 1. Cree y agregue el siguiente contenido al archivo `.github/actions/joke-action/joke.js`:
 
-   ```
-   constante solicitud = require("solicitud-promesa");
+```
+const request = require("request-promise");
 
-   opciones constantes = {
-     método: "GET",
-     tipo: "https://icanhazdadjoke.com/",
-     encabezados: {
-       Aceptar: "application/json",
-       "User-Agent": "Curso de GitHub sobre cómo escribir acciones de JavaScript."
-     },
-     json: verdadero,
-   };
+const options = {
+  method: "GET",
+  uri: "https://icanhazdadjoke.com/",
+  headers: {
+    Accept: "application/json",
+    "User-Agent": "Writing JavaScript action GitHub Skills course.",
+  },
+  json: true,
+};
 
-   función asíncrona getJoke() {
-     const res = await solicitud(opciones);
-     devolver res.joke;
-   }
+async function getJoke() {
+  const res = await request(options);
+  return res.joke;
+}
 
-   módulo.exports = obtenerBroma;
-   ```
+module.exports = getJoke;
+```
 
 2. Guarde el archivo `joke.js`.
 3. Cree y agregue el siguiente contenido al archivo `.github/actions/joke-action/main.js`:
 
-   ``javascript
-   const getJoke = require("./broma");
-   constante core = require("@actions/core");
+```
+const getJoke = require("./joke");
+const core = require("@actions/core");
 
-   función asíncrona ejecutar() {
-     const broma = await obtenerBroma();
-     console.log(broma);
-     core.setOutput("salida-de-broma", broma);
-   }
+async function run() {
+  const joke = await getJoke();
+  console.log(joke);
+  core.setOutput("joke-output", joke);
+}
 
-   correr();
-   ```
+run();
+```
 
 4. Guarde el archivo `main.js`.
 5. Confirme los cambios en esta rama y envíelos a GitHub:
-   ``concha
+```
    git agrega joke.js main.js
    git commit -m 'creando joke.js y main.js'
    git pull
    git push
-   ```
+```
 6. Espere unos 20 segundos y luego actualice esta página (la que está siguiendo las instrucciones). [GitHub Actions](https://docs.github.com/en/actions) actualizará automáticamente al siguiente paso.
 
 
@@ -358,28 +382,28 @@ Todos los siguientes pasos agregarán la acción al archivo de flujo de trabajo 
 ### :keyboard: Actividad 1: Edite la acción personalizada en la parte inferior del archivo de flujo de trabajo.
 
 ```yaml
-- nombre: ja-ja
-  usos: ./.github/actions/joke-action
+- name: ha-ha
+  uses: ./.github/actions/joke-action
 ```
 
 Así es como debería verse el archivo completo (estamos usando problemas en lugar del evento de solicitud de extracción y eliminando la referencia a la acción hola mundo).
 
 ```yaml
-nombre: Acciones JS
+name: JS Actions
 
-en:
-  asuntos:
-    tipos: [etiquetados]
+on:
+  issues:
+    types: [labeled]
 
-trabajos:
-  acción:
-    si: ${{ !github.event.repository.is_template }}
-    se ejecuta en: ubuntu-latest
+jobs:
+  action:
+    if: ${{ !github.event.repository.is_template }}
+    runs-on: ubuntu-latest
 
-    pasos:
-      - usos: acciones/checkout@v4
-      - nombre: ja-ja
-        usos: ./.github/actions/joke-action
+    steps:
+      - uses: actions/checkout@v4
+      - name: ha-ha
+        uses: ./.github/actions/joke-action
 ```
 
 Puedes realizar estos cambios en tu repositorio abriendo [`my-workflow.yml`](/.github/workflows/my-workflow.yml) en otra pestaña del navegador y editando el archivo directamente. Asegúrate de seleccionar la opción "Confirmar directamente en la rama principal".
@@ -395,8 +419,8 @@ Ya está todo listo y ya podemos reírnos. Encontrarás algunas etiquetas relaci
 
 ### Iniciar una broma
 
-1. Abra el problema n.° 1 en la pestaña "Problemas".
-2. Aplique la etiqueta «primer chiste» al problema.
-3. Espere unos segundos y luego aplique la etiqueta "segundo chiste" al problema.
-4. Verifique los resultados del flujo de trabajo "Acciones JS" en la pestaña "Acciones".
+1. Abra el issue #1 en la pestaña "Issues".
+2. Aplique la etiqueta «first-joke» al issue.
+3. Espere unos segundos y luego aplique la etiqueta "second-joke" al issue.
+4. Verifique los resultados del workflow "JS Actions" en la pestaña "Actions".
 5. Espera unos 20 segundos y luego actualiza esta página (la que estás siguiendo). [GitHub Actions](https://docs.github.com/en/actions) actualizará automáticamente al siguiente paso.
