@@ -104,7 +104,7 @@ git remote add origin https://github.com/USUARIO/REPO.git
    ```
 Commit
    ```
-   git commit -m 'add project dependencies'
+   git commit -m "add project dependencies"
    ```
 11. Envíe sus cambios a su repositorio:
    ```
@@ -145,7 +145,7 @@ runs:
 4. Confirme los cambios y envíelos a la rama `main`:
 ```
 git add action.yml
-git commit -m 'create action.yml'
+git commit -m "create action.yml"
 git pull
 git push
 ```
