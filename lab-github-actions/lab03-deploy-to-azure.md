@@ -97,23 +97,24 @@ No     Subscription name    Subscription ID                       Tenant
 6. En su terminal, ejecute el siguiente comando.
 
 ```
-az ad sp create-for-rbac --name "GitHub-Actions" --role contributor \
- --scopes /subscriptions/{subscription-id} \
- --sdk-auth
-
+az ad sp create-for-rbac --name "GitHub-Actions" --role contributor --scopes /subscriptions/{subscription-id} --sdk-auth
     # Replace {subscription-id} with the same id stored in AZURE_SUBSCRIPTION_ID.
 ```
 
 Nota : Este \ carácter funciona como un salto de línea en sistemas Unix. Si usa un sistema Windows, este \ carácter provocará un error en este comando. Si usa Windows, coloque este comando en una sola línea.
 
-7. Copia todo el contenido de la respuesta del comando; lo llamaremos AZURE_CREDENTIALS. Aquí tienes un ejemplo de cómo se ve:
+7. Para obtener las credenciales en el formato JSON utilizamos el siguiente script:
+
+```
+az ad sp create-for-rbac --name "GitHub-Actions" --role contributor  --scopes /subscriptions/e2948cf7-fe18-4588-977c-bc9422982b8c --query "{clientId:appId, clientSecret:password, tenantId:tenant, subscriptionId:id}"  --output json
+```
+Y nos devolvera de esta forma: 
 ```
 {
-  "clientId": "<GUID>",
-  "clientSecret": "<GUID>",
-  "subscriptionId": "<GUID>",
-  "tenantId": "<GUID>",
-  (...)
+  "clientId": "bca9eb25-8dc2-4017-88ea-7dc24f90d***",
+  "clientSecret": "iNq8Q~BnK4icO0bKLmGYv-ET2-yFH7UA.zJNH***",
+  "subscriptionId": "e2948cf7-fe18-4588-977c-bc9422982***",
+  "tenantId": "2e3210f5-ebd6-4a78-815c-f7da9895e***"
 }
 ```
 
